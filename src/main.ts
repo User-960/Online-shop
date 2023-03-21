@@ -1,0 +1,1 @@
+alert("Mini Base Config...");
