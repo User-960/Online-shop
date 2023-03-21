@@ -20,6 +20,18 @@ module.exports = {
     })
   ],
 
+   // GENERAL RULES
+    module: {
+      rules: [
+        // TYPESCRIPT FILES
+        {
+          test: /\.ts$/,
+          loader: 'ts-loader',
+          exclude: /node_modules/
+        },
+      ]
+    },
+
   // ENDPOINT
   output: {
     filename: '[name].bundle.js',
