@@ -10,7 +10,9 @@ module.exports = merge(common, {
 
     // PROD PLUGINS
     plugins: [
-      new MiniCssExtractPlugin(),
+      new MiniCssExtractPlugin({
+        filename: "[name].[contenthash].css",
+      }),
     ],
 
     // PROD RULES

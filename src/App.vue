@@ -2,6 +2,7 @@
   <img src="./static/images/home.png" alt="logo">
   <h1>Vue - TypeScript - Webpack</h1>
   <p>{{ message }}</p>
+  <img src="./static/images/info-img.jpg" alt="img">
 </template>
 
 <script lang="ts">
