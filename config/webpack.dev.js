@@ -13,4 +13,15 @@ module.exports = merge(common, {
     open: true,
     hot: true,
   },
+
+  // DEV RULES
+  module: {
+    rules: [
+      // CSS FILES
+      {
+        test: /\.css$/,
+        use: ['vue-style-loader', 'css-loader'],
+      },
+    ],
+  },
 });
