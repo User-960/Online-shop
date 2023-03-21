@@ -1,4 +1,5 @@
 <template>
+  <img src="./static/home.png" alt="logo">
   <h1>Vue - TypeScript - Webpack</h1>
   <p>{{ message }}</p>
 </template>
@@ -15,6 +16,11 @@ export default defineComponent({
 </script>
 
 <style scoped>
+img{
+    display: block;
+    margin: 100px auto 10px;
+}
+
 h1, p {
   width: 100%;
   text-align: center;

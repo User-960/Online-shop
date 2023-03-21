@@ -48,6 +48,12 @@ module.exports = {
             appendTsSuffixTo: [/\.vue$/],
           },
         },
+
+        // IMAGE FILES
+        {
+          test: /\.png$/,
+          type: 'asset/resource',
+        },
       ]
     },
 
