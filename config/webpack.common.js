@@ -18,5 +18,12 @@ module.exports = {
       favicon: path.resolve(__src, 'static', 'favicon.ico'),
       template: path.resolve(__src, 'templates', 'index.html'),
     })
-  ]
+  ],
+
+  // ENDPOINT
+  output: {
+    filename: '[name].bundle.js',
+    path: path.resolve(__base, 'dist'),
+    clean: true,
+  },
 };
