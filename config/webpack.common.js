@@ -49,6 +49,15 @@ module.exports = {
           },
         },
 
+        // FONTS FILES
+        {
+          test: /\.woff2?$/i,
+          type: "asset/resource",
+          generator: {
+            filename: "fonts/[name][ext]",
+          },
+        },
+
         // IMAGE FILES
         {
           test: /\.(png|jpg)$/i, 
