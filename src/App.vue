@@ -1,5 +1,5 @@
 <template>
-  <img src="./static/home.png" alt="logo">
+  <img src="./static/images/home.png" alt="logo">
   <h1>Vue - TypeScript - Webpack</h1>
   <p>{{ message }}</p>
 </template>

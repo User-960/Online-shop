@@ -51,9 +51,13 @@ module.exports = {
 
         // IMAGE FILES
         {
-          test: /\.png$/,
-          type: 'asset/resource',
-        },
+          test: /\.png$/, 
+          loader: 'file-loader',
+          options: {
+            name: '[contenthash].[ext]',
+            outputPath: 'images'
+          },
+        }
       ]
     },
 
