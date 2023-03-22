@@ -36,6 +36,7 @@ module.exports = merge(common, {
                 },
               },
             },
+            'group-css-media-queries-loader',
             'sass-loader',
           ]
         },
