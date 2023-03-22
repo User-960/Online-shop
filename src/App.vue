@@ -1,8 +1,8 @@
 <template>
-  <img src="./static/images/home.png" alt="logo">
-  <h1>Vue - TypeScript - Webpack</h1>
-  <p>{{ message }}</p>
-  <img src="./static/images/info-img.jpg" alt="img">
+  <img class="main__img-icon" src="./static/images/home.png" alt="logo">
+  <h1 class="main__title">Vue - TypeScript - Webpack</h1>
+  <p class="main__message">{{ message }}</p>
+  <img class="main__img-back" src="./static/images/info-img.jpg" alt="img">
 </template>
 
 <script lang="ts">
@@ -16,20 +16,26 @@ export default defineComponent({
 })
 </script>
 
-<style scoped>
-img{
+<style lang="scss" scoped>
+@import './static/style/vars';
+
+.main {
+  &__title,
+  &__message {
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+    font-family: 'Montserrat';
+    color: $color-lightcoral;
+  }
+  &__img-icon,
+  &__img-back {
     display: block;
     margin: 100px auto 10px;
+  }
 }
 
-h1, p {
-  width: 100%;
-  text-align: center;
-  margin-top: 10px;
-  font-family: 'Montserrat';
-}
-
-p {
+.main__message {
   font-size: 20px;
 }
 </style>
