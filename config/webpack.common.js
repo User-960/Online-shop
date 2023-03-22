@@ -49,6 +49,24 @@ module.exports = {
           },
         },
 
+        // JAVASCRIPT FILES
+        {
+          test: /\.js?$/,
+          exclude: file => (
+            /node_modules/.test(file) &&
+            !/\.vue\.js/.test(file)
+          ),
+          use: {
+            loader: "babel-loader",
+            options: {
+              presets: [["@babel/preset-env", "@babel/preset-typescript", {
+                "useBuiltIns": "usage",
+                "corejs": "3.22"
+              }]],
+            },
+          },
+        },
+
         // FONTS FILES
         {
           test: /\.woff2?$/i,

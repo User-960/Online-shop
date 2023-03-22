@@ -6,6 +6,7 @@ module.exports = merge(common, {
   // DEVELOPMENT MODE
   mode: 'development',
   devtool: 'inline-source-map',
+  target: 'web',
 
   // DEV SERVER CONFIG
   devServer: {

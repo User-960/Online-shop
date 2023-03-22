@@ -10,7 +10,16 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ],
   "devDependencies": {
+    "@babel/core": "^7.21.3",
+    "@babel/preset-env": "^7.20.2",
+    "@babel/preset-typescript": "^7.21.0",
+    "babel-loader": "^9.1.2",
     "css-loader": "^6.7.3",
     "css-minimizer-webpack-plugin": "^4.2.2",
     "file-loader": "^6.2.0",
@@ -36,6 +45,7 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
+    "core-js": "^3.29.1",
     "normalize.css": "^8.0.1"
   }
 }

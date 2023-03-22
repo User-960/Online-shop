@@ -7,6 +7,7 @@ module.exports = merge(common, {
   // PRODUCTION MODE
     mode: 'production',
     devtool: false,
+    target: 'browserslist',
 
     // PROD PLUGINS
     plugins: [
@@ -19,10 +20,6 @@ module.exports = merge(common, {
     module: {
       rules: [
         // CSS FILES
-        // {
-        //   test: /\.css$/,
-        //   use:[MiniCssExtractPlugin.loader, 'css-loader'],
-        // },
         {
         test: /\.scss$/,
         use: [
