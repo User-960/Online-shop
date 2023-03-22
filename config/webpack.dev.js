@@ -18,16 +18,20 @@ module.exports = merge(common, {
   module: {
     rules: [
       // CSS FILES
-      // {
-      //   test: /\.css$/,
-      //   use: ['vue-style-loader', 'css-loader'],
-      // },
       {
         test: /\.scss$/,
         use: [
           'vue-style-loader',
           'css-loader',
-          'sass-loader'
+          {
+            loader: "postcss-loader",
+            options: {
+              postcssOptions: {
+                plugins: [require("postcss-preset-env")],
+              },
+            },
+          },
+          'sass-loader',
         ]
       }
     ],
