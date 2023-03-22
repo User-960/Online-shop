@@ -1,19 +1,31 @@
 <template>
-  <img class="main__img-icon" src="./static/images/home.png" alt="logo">
-  <h1 class="main__title">Vue - TypeScript - Webpack</h1>
-  <p class="main__message">{{ message }}</p>
-  <img class="main__img-back" src="./static/images/info-img.jpg" alt="img">
+  <img
+    class="main__img-icon"
+    src="./static/images/home.png"
+    alt="logo"
+  >
+  <h1 class="main__title">
+    Vue - TypeScript - Webpack
+  </h1>
+  <p class="main__message">
+    {{ message }}
+  </p>
+  <img
+    class="main__img-back"
+    src="./static/images/info-img.jpg"
+    alt="img"
+  >
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent } from 'vue';
 
 export default defineComponent({
-  data: () => ({
-    message: "Hello World"
-  }),
   name: 'App',
-})
+  data: () => ({
+    message: 'Hello World',
+  }),
+});
 </script>
 
 <style lang="scss" scoped>

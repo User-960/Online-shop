@@ -3,6 +3,7 @@ const Webpack = require('webpack');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
+const ESLintPlugin = require('eslint-webpack-plugin');
 
 // UTILS
 const __base = path.resolve(__dirname, '..');
@@ -28,6 +29,10 @@ module.exports = {
       template: path.resolve(__src, 'templates', 'index.html'),
     }),
     new VueLoaderPlugin(),
+    new ESLintPlugin({ 
+      fix: true,
+      files: 'src/**/*.ts', 
+    }),
   ],
 
    // GENERAL RULES
@@ -57,11 +62,11 @@ module.exports = {
             !/\.vue\.js/.test(file)
           ),
           use: {
-            loader: "babel-loader",
+            loader: 'babel-loader',
             options: {
-              presets: [["@babel/preset-env", "@babel/preset-typescript", {
-                "useBuiltIns": "usage",
-                "corejs": "3.22"
+              presets: [['@babel/preset-env', '@babel/preset-typescript', {
+                'useBuiltIns': 'usage',
+                'corejs': '3.22'
               }]],
             },
           },
@@ -70,9 +75,9 @@ module.exports = {
         // FONTS FILES
         {
           test: /\.woff2?$/i,
-          type: "asset/resource",
+          type: 'asset/resource',
           generator: {
-            filename: "fonts/[name][ext]",
+            filename: 'fonts/[name][ext]',
           },
         },
 
@@ -117,7 +122,7 @@ module.exports = {
 
   // ENDPOINT
   output: {
-    filename: "[name].[contenthash].js",
+    filename: '[name].[contenthash].js',
     path: path.resolve(__base, 'dist'),
     clean: true,
   },
