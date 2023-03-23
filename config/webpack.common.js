@@ -15,6 +15,12 @@ module.exports = {
     app: path.resolve(__src, 'main.ts'),
   },
 
+  performance: {
+    maxAssetSize: 400000,
+    maxEntrypointSize: 400000,
+    hints: 'warning'
+  },
+
   // GENERAL PLUGINS
   plugins: [
     // to remove warn in browser console: runtime-core.esm-bundler.js:3607 
@@ -43,7 +49,7 @@ module.exports = {
           test: /\.vue$/,
           loader: 'vue-loader',
       },
-      
+
       // TYPESCRIPT FILES
       {
         test: /\.ts$/,
