@@ -1,6 +1,7 @@
 // const path = require('path/posix');
 const { merge } = require('webpack-merge');
 const common  =require('./webpack.common.js');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = merge(common, {
   // DEVELOPMENT MODE
@@ -14,6 +15,10 @@ module.exports = merge(common, {
     open: true,
     hot: true,
   },
+
+  plugins: [
+    new BundleAnalyzerPlugin()
+  ],
 
   // DEV RULES
   module: {

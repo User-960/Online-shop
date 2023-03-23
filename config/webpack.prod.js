@@ -11,6 +11,12 @@ module.exports = merge(common, {
   devtool: false,
   target: 'browserslist',
 
+  performance: {
+    maxAssetSize: 2000000,
+    maxEntrypointSize: 2000000,
+    hints: 'warning'
+  },
+
   // PROD PLUGINS
   plugins: [
     new MiniCssExtractPlugin({
