@@ -6,7 +6,8 @@
     "serve": "webpack serve --config config/webpack.dev.js",
     "build": "webpack --config config/webpack.prod.js",
     "clear": "rd /s /q dist",
-    "eslint": "npx eslint \"src/**/*.{ts,vue}\""
+    "eslint": "npx eslint \"src/**/*.{ts,vue}\"",
+    "prepare": "husky install"
   },
   "lint-staged": {
     "src/**/*.{ts,vue}": "eslint --cache --fix"
@@ -44,6 +45,7 @@
     "resolve-url-loader": "^5.0.0",
     "sass": "^1.59.3",
     "sass-loader": "^13.2.1",
+    "terser-webpack-plugin": "^5.3.7",
     "ts-loader": "^9.4.2",
     "typescript": "^5.0.2",
     "vue": "^3.2.47",

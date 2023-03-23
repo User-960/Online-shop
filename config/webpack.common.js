@@ -36,89 +36,89 @@ module.exports = {
   ],
 
    // GENERAL RULES
-    module: {
-      rules: [
-        // VUE FILES
-        {
-            test: /\.vue$/,
-            loader: 'vue-loader',
+  module: {
+    rules: [
+      // VUE FILES
+      {
+          test: /\.vue$/,
+          loader: 'vue-loader',
+      },
+      
+      // TYPESCRIPT FILES
+      {
+        test: /\.ts$/,
+        loader: 'ts-loader',
+        exclude: /node_modules/,
+        options: {
+          appendTsSuffixTo: [/\.vue$/],
         },
+      },
 
-        // TYPESCRIPT FILES
-        {
-          test: /\.ts$/,
-          loader: 'ts-loader',
-          exclude: /node_modules/,
+      // JAVASCRIPT FILES
+      {
+        test: /\.js?$/,
+        exclude: file => (
+          /node_modules/.test(file) &&
+          !/\.vue\.js/.test(file)
+        ),
+        use: {
+          loader: 'babel-loader',
           options: {
-            appendTsSuffixTo: [/\.vue$/],
+            presets: [['@babel/preset-env', '@babel/preset-typescript', {
+              'useBuiltIns': 'usage',
+              'corejs': '3.22'
+            }]],
           },
         },
+      },
 
-        // JAVASCRIPT FILES
-        {
-          test: /\.js?$/,
-          exclude: file => (
-            /node_modules/.test(file) &&
-            !/\.vue\.js/.test(file)
-          ),
-          use: {
-            loader: 'babel-loader',
+      // FONTS FILES
+      {
+        test: /\.woff2?$/i,
+        type: 'asset/resource',
+        generator: {
+          filename: 'fonts/[name][ext]',
+        },
+      },
+
+      // IMAGE FILES
+      {
+        test: /\.(png|jpg)$/i, 
+        use: [
+          {
+            loader: 'file-loader',
             options: {
-              presets: [['@babel/preset-env', '@babel/preset-typescript', {
-                'useBuiltIns': 'usage',
-                'corejs': '3.22'
-              }]],
+              name: '[contenthash].[ext]',
+              outputPath: 'images'
             },
           },
-        },
-
-        // FONTS FILES
-        {
-          test: /\.woff2?$/i,
-          type: 'asset/resource',
-          generator: {
-            filename: 'fonts/[name][ext]',
-          },
-        },
-
-        // IMAGE FILES
-        {
-          test: /\.(png|jpg)$/i, 
-          use: [
-            {
-              loader: 'file-loader',
-              options: {
-                name: '[contenthash].[ext]',
-                outputPath: 'images'
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              mozjpeg: {
+                progressive: true,
               },
-            },
-            {
-              loader: 'image-webpack-loader',
-              options: {
-                mozjpeg: {
-                  progressive: true,
-                },
-                // optipng.enabled: false will disable optipng
-                optipng: {
-                  enabled: false,
-                },
-                pngquant: {
-                  quality: [0.65, 0.90],
-                  speed: 4
-                },
-                gifsicle: {
-                  interlaced: false,
-                },
-                // the webp option will enable WEBP
-                webp: {
-                  quality: 75
-                }
+              // optipng.enabled: false will disable optipng
+              optipng: {
+                enabled: false,
+              },
+              pngquant: {
+                quality: [0.65, 0.90],
+                speed: 4
+              },
+              gifsicle: {
+                interlaced: false,
+              },
+              // the webp option will enable WEBP
+              webp: {
+                quality: 75
               }
-            },
-          ],
-        }
-      ]
-    },
+            }
+          },
+        ],
+      }
+    ]
+  },
 
   // ENDPOINT
   output: {

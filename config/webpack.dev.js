@@ -1,4 +1,4 @@
-const path = require('path/posix');
+// const path = require('path/posix');
 const { merge } = require('webpack-merge');
 const common  =require('./webpack.common.js');
 
@@ -25,19 +25,19 @@ module.exports = merge(common, {
           'vue-style-loader',
           'css-loader',
           {
-            loader: "postcss-loader",
+            loader: 'postcss-loader',
             options: {
               postcssOptions: {
-                plugins: [require("postcss-preset-env")],
+                plugins: [require('postcss-preset-env')],
               },
             },
           },
           'group-css-media-queries-loader',
           {
-            loader: "resolve-url-loader",
+            loader: 'resolve-url-loader',
           },
           {
-            loader: "sass-loader",
+            loader: 'sass-loader',
             options: {
               sourceMap: true,
             },
