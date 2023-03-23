@@ -8,6 +8,9 @@
     "clear": "rd /s /q dist",
     "eslint": "npx eslint \"src/**/*.{ts,vue}\""
   },
+  "lint-staged": {
+    "src/**/*.{ts,vue}": "eslint --cache --fix"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -31,7 +34,9 @@
     "file-loader": "^6.2.0",
     "group-css-media-queries-loader": "^4.3.0",
     "html-webpack-plugin": "^5.5.0",
+    "husky": "^8.0.3",
     "image-webpack-loader": "^8.1.0",
+    "lint-staged": "^13.2.0",
     "mini-css-extract-plugin": "^2.7.5",
     "postcss": "^8.4.21",
     "postcss-loader": "^7.1.0",
