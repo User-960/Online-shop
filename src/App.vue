@@ -7,9 +7,6 @@
   <h1 class="main__title">
     Vue - TypeScript - Webpack
   </h1>
-  <p class="main__message">
-    {{ message }}
-  </p>
   <vMainWrapper :title="title" />
 </template>
 
@@ -20,10 +17,9 @@ import vMainWrapper from './components/v-main-wrapper.vue';
 export default defineComponent({
   name: 'App',
   components: {
-    vMainWrapper
+    vMainWrapper,
   },
   data: () => ({
-    message: 'Hello World',
     title: 'Main Wrapper Test'
   })
 });
@@ -33,29 +29,16 @@ export default defineComponent({
 @import './static/style/vars';
 
 .main {
-  &__title,
-  &__message {
+  &__title {
     width: 100%;
     text-align: center;
     margin-top: 10px;
     font-family: 'Montserrat';
     color: $color-lightcoral;
   }
-  &__img-icon,
-  &__img-back {
+  &__img-icon {
     display: block;
     margin: 100px auto 10px;
   }
-}
-
-.main__message {
-  font-size: 20px;
-}
-
-.example {
-    display: grid;
-    transition: all .5s;
-    user-select: none;
-    background: linear-gradient(to bottom, white, black);
 }
 </style>
