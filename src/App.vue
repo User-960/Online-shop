@@ -3,32 +3,33 @@
     class="main__img-icon"
     src="./static/images/home.png"
     alt="logo"
-  >
+  />
   <h1 class="main__title">
     Vue - TypeScript - Webpack
   </h1>
   <p class="main__message">
     {{ message }}
   </p>
-  <img
-    class="main__img-back"
-    src="./static/images/info-img.jpg"
-    alt="img"
-  >
+  <vMainWrapper :title="title" />
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import vMainWrapper from './components/v-main-wrapper.vue';
 
 export default defineComponent({
   name: 'App',
+  components: {
+    vMainWrapper
+  },
   data: () => ({
     message: 'Hello World',
-  }),
+    title: 'Main Wrapper Test'
+  })
 });
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import './static/style/vars';
 
 .main {

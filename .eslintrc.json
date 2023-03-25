@@ -52,6 +52,24 @@
     "@typescript-eslint/no-empty-function": "off", // disallow empty functions
     "@typescript-eslint/no-inferrable-types": "off", // disallow explicit type declarations for variables or parameters
     "@typescript-eslint/no-var-requires": "off", // disallow require statements except in import statements.
-    "@typescript-eslint/no-explicit-any": "off"
+    "@typescript-eslint/no-explicit-any": "off",
+
+    // This rule aims to enforce the self-closing sign as the configured style.
+    "vue/html-self-closing": ["error", {
+    "html": {
+      "void": "always",
+      "normal": "never",
+      "component": "always"
+    },
+      "svg": "always",
+      "math": "always"
+    }],
+    // This rule aims to warn the component definition names other than the configured casing.
+    "vue/component-definition-name-casing": ["off", "PascalCase", "kebab-case"],
+    "vue/no-export-in-script-setup": "off",
+    // This rule requires default value to be set for each props that are not marked as required (except Boolean props).
+    "vue/require-default-prop": "off",
+    // This rule enforces that a props statement contains type definition.
+    "vue/require-prop-types": "warn"
   }
 }
