@@ -83,13 +83,14 @@ module.exports = {
 
       // IMAGE FILES
       {
-        test: /\.(png|jpg)$/i, 
+        test: /\.(png|jpg|jpeg)$/i, 
         use: [
           {
             loader: 'file-loader',
             options: {
               name: '[contenthash].[ext]',
-              outputPath: 'images'
+              outputPath: 'images',
+              esModule: false,
             },
           },
           {

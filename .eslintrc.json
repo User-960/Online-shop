@@ -70,6 +70,33 @@
     // This rule requires default value to be set for each props that are not marked as required (except Boolean props).
     "vue/require-default-prop": "off",
     // This rule enforces that a props statement contains type definition.
-    "vue/require-prop-types": "warn"
+    "vue/require-prop-types": "warn",
+    // This rule checks whether every v-for directive is valid.
+    "vue/valid-v-for": "error",
+    // This rule enforce proper casing of props in vue components(camelCase).
+    "vue/prop-name-casing": ["error", "snake_case"],
+    // This rule enforces a line break before and after the contents of a singleline element.
+    "vue/singleline-html-element-content-newline": ["error", {
+      "ignoreWhenNoAttributes": true,
+      "ignoreWhenEmpty": true,
+      "ignores": ["pre", "textarea", "p", "button"]
+    }],
+    "vue/max-attributes-per-line": ["error", {
+      "singleline": {
+        "max": 1
+      },      
+      "multiline": {
+        "max": 1
+      }
+    }],
+    // This rule reports event triggers not declared with the emits option.
+    "vue/require-explicit-emits": ["error", {
+      "allowProps": false
+    }],
+    // This rule enforces using hyphenated v-on event names on custom components in Vue templates.
+    "vue/v-on-event-hyphenation": ["error", "always", {
+      "autofix": true,
+      "ignore": []
+    }]
   }
 }
