@@ -1,9 +1,9 @@
 <template>
   <div class="v-main-wrapper">
     {{ title }}
+    <vCatalog />
+    <vCart />
   </div>
-  <vCatalog />
-  <vCart />
 </template>
 
 <script lang="ts">
@@ -34,10 +34,6 @@
 
 <style lang="scss">
   .v-main-wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     max-width: 900px;
     margin: 0 auto;
   }
