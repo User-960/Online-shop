@@ -127,4 +127,8 @@ module.exports = {
     path: path.resolve(__base, 'dist'),
     clean: true,
   },
+
+  resolve: {
+    extensions: ['.ts', '.js', '...']
+  },
 };
