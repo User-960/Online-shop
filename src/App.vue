@@ -1,5 +1,5 @@
 <template>
-  <vMainWrapper :title="title" />
+  <vMainWrapper />
 </template>
 
 <script lang="ts">
@@ -12,7 +12,7 @@ export default defineComponent({
     vMainWrapper,
   },
   data: () => ({
-    title: 'Main Wrapper Test'
+    
   })
 });
 </script>

@@ -1,8 +1,10 @@
 <template>
   <div class="v-main-wrapper">
-    {{ title }}
     <vCatalog />
-    <vCart />
+    <vCart 
+      v-if="CART.length"
+      :cart_data="CART"
+    />
   </div>
 </template>
 
@@ -10,6 +12,7 @@
   import { defineComponent } from 'vue';
   import vCatalog from './v-catalog.vue';
   import vCart from './v-cart.vue';
+  import { mapGetters } from 'vuex';
 
   export default defineComponent({
     name: 'v-main-wrapper',
@@ -17,13 +20,15 @@
       vCatalog,
       vCart
     },
-    props: {
-      title: String,
-    },
+    // props: {},
     data: () => ({
 
     }),
-    computed: {},
+    computed: {
+      ...mapGetters([
+        'CART'
+      ])
+    },
     watch: {},
     mounted() {
       console.log('Hello! I am alive.');

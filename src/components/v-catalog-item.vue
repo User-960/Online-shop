@@ -9,7 +9,7 @@
     <p class="v-catalog-item__price">Price: {{ product_data.price }}</p>
     <button
       class="v-catalog-item__add_to_cart_btn btn"
-      @click="sendDataToParent()"
+      @click="addToCart"
     >
       Add to Cart
     </button>
@@ -17,26 +17,27 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent } from 'vue';
+  import { defineComponent, PropType } from 'vue';
+  import Product from '../models/ProductModel';
 
   export default defineComponent({
     name: 'v-catalog-item',
     props: {
       product_data: {
-        type: Object,
+        type: Object as PropType<Product>,
         default() {
           return {};
         }
       }
     },
-    emits: ['sendDataToParent'],
+    emits: ['addToCart'],
     data: () => ({
 
     }),
     computed: {},
     methods: {
-      sendDataToParent() {
-        this.$emit('sendDataToParent', this.product_data.article);
+      addToCart() {
+        this.$emit('addToCart', this.product_data);
       }
     }
   });

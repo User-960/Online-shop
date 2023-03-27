@@ -1,9 +1,17 @@
 import axios from 'axios';
+import Product from '../../models/ProductModel';
+
+interface StateRepo {
+  products: Array<Product>,
+  cart: Array<Product>
+}
 
 export default {
   state: {
-    products: []
+    products: [] as Product[],
+    cart: [] as Product[]
   },
+
   actions: {
     async GET_PRODUCTS_FROM_API({commit}) {
       return await axios('http://localhost:3001/products', {
@@ -17,16 +25,46 @@ export default {
           console.log(error);
           return error;
         });
+    },
+    ADD_TO_CART({commit}, product: Product): void {
+      commit('SET_CART', product);
+    },
+    DELETE_FROM_CART({commit}, index: number): void {
+      commit('REMOVE_FROM_CART', index);
     }
   },
+  
   mutations: {
-    SET_PRODUCTS_TO_STATE: (state, products) => {
+    SET_PRODUCTS_TO_STATE: (state: StateRepo, products: any): void => {
       state.products = products;
+    },
+    SET_CART: (state: StateRepo, product: Product): void => {
+      if (state.cart.length) {
+        let isProductExist: boolean = false;
+        state.cart.map(function(item) {
+          if (item.article === product.article) {
+            isProductExist = true;
+            item.quantity++;
+          }
+        });
+        if (!isProductExist) {
+          state.cart.push(product);
+        }
+      } else {
+        state.cart.push(product);
+      }
+    },
+    REMOVE_FROM_CART: (state: StateRepo, index: number): void => {
+      state.cart.splice(index, 1);
     }
   },
+
   getters: {
-    PRODUCTS(state) {
+    PRODUCTS(state: StateRepo): Product[] {
       return state.products;
+    },
+    CART(state: StateRepo): Product[] {
+      return state.cart;
     }
   }
 };

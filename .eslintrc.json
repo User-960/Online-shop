@@ -53,6 +53,7 @@
     "@typescript-eslint/no-inferrable-types": "off", // disallow explicit type declarations for variables or parameters
     "@typescript-eslint/no-var-requires": "off", // disallow require statements except in import statements.
     "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/ban-types": "off", // Disallow certain types
 
     // This rule aims to enforce the self-closing sign as the configured style.
     "vue/html-self-closing": ["error", {
@@ -97,6 +98,8 @@
     "vue/v-on-event-hyphenation": ["error", "always", {
       "autofix": true,
       "ignore": []
-    }]
+    }],
+    // This rule reports mutation of component props.
+    "vue/no-mutating-props": "off"
   }
 }
