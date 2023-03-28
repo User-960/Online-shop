@@ -6,13 +6,12 @@ const routes = [
   {
     path: '/',
     name: 'catalog',
-    component: vCatalog
+    component: vCatalog,
   },
   {
     path: '/cart',
     name: 'cart',
     component: vCart,
-    props: true
   }
 ];
 

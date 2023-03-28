@@ -37,13 +37,7 @@
 
     }),
     computed: {},
-    mounted() {
-      this.addQty();
-    },
     methods: {
-      addQty() {
-        this.cart_item_data.quantity = 1;
-      },
       deleteFromCart() {
         this.$emit('deleteFromCart');
       }

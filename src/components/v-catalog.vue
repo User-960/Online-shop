@@ -1,6 +1,13 @@
 <template>
   <div class="v-catalog">
-    <h1>Catalog</h1>
+    <router-link :to="{ name: 'cart' }">
+      <div class="v-catalog__link_to_cart">
+        Cart: {{ CART.length }}
+      </div>
+    </router-link>
+    <h1 class="v-catalog__title">
+      Catalog
+    </h1>
     <div class="v-catalog__list">
       <vCatalogItem 
         v-for="product in PRODUCTS"
@@ -29,7 +36,8 @@
     }),
     computed: {
       ...mapGetters([
-        'PRODUCTS'
+        'PRODUCTS',
+        'CART'
       ])
     },
     mounted() {
@@ -53,12 +61,24 @@
 </script>
 
 <style lang="scss">
+@import '../static/style/vars';
 .v-catalog {
   &__list {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+  }
+  &__link_to_cart {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: $spacing-padding * 2;
+    border: 1px solid #aeaeae;
+  }
+  &__title {
+    margin: 20px auto;
+    text-align: center;
   }
 }
 </style>
