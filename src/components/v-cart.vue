@@ -20,6 +20,10 @@
       :cart_item_data="item"
       @delete-from-cart="deleteFromCart(index)"
     />
+    <div class="v-cart__total">
+      <p class="v-cart__total-text">Total:</p>
+      <p class="v-cart__total-number">{{ cartTotalCost }} USD</p>
+    </div>
   </div>
 </template>
 
@@ -39,7 +43,18 @@
     computed: {
       ...mapGetters([
         'CART'
-      ])
+      ]),
+      cartTotalCost() {
+        let result = [];
+        for (let item of this.CART) {
+          result.push(item.price * item.quantity); 
+        }
+
+        result = result.reduce(function(sum: number, el): number {
+          return sum + el;
+        });
+        return result;
+      }
     },
     methods: {
       ...mapActions([
@@ -52,7 +67,9 @@
   });
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+@import '../static/style/vars';
+
 .v-cart {
   &__title {
     margin: 20px auto;
@@ -61,6 +78,18 @@
   &__cart_empty {
     text-align: center;
     font-size: 16px;
+  }
+  &__total {
+    font-weight: bold;
+    display: flex;
+    color: $color-black;
+    margin: 0 $spacing-margin * 2;
+    padding: 10px 0;
+    font-size: 20px;
+    border-top: 1px solid $color-dark;
+  }
+  &__total-number {
+    margin-left: 8px;
   }
 }
 </style>
