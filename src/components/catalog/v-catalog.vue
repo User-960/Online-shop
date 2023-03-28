@@ -4,7 +4,7 @@
       <div class="v-catalog__link_to_cart">
         <img
           class="v-catalog__link_to_cart_img"
-          :src="require('../static/images/cart-icon.svg')"
+          :src="require('../../static/images/cart-icon.svg')"
           alt="cart"
         />
         Cart: {{ CART.length }}
@@ -28,7 +28,7 @@
   import { defineComponent } from 'vue';
   import { mapGetters, mapActions } from 'vuex';
   import vCatalogItem from './v-catalog-item.vue';
-  import Product from '../models/ProductModel';
+  import Product from '../../models/ProductModel';
 
   export default defineComponent({
     name: 'v-catalog',
@@ -66,7 +66,7 @@
 </script>
 
 <style lang="scss">
-@import '../static/style/vars';
+@import '../../static/style/vars';
 .v-catalog {
   &__list {
     display: flex;

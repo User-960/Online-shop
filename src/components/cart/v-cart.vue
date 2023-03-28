@@ -5,7 +5,7 @@
         Back to Catalog
         <img
           class="v-catalog__link_to_shop_img"
-          :src="require('../static/images/shop-icon.svg')"
+          :src="require('../../static/images/shop-icon.svg')"
           alt="shop"
         />
       </div>
@@ -88,7 +88,7 @@
 </script>
 
 <style lang="scss">
-@import '../static/style/vars';
+@import '../../static/style/vars';
 
 .v-cart {
   &__title {

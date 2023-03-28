@@ -2,7 +2,7 @@
   <div class="v-cart-item">
     <img
       class="v-cart-item__img"
-      :src="require('../static/images/catalog/' + cart_item_data.image)"
+      :src="require('../../static/images/catalog/' + cart_item_data.image)"
       alt="image"
     />
     <div class="v-cart-item__info">
@@ -38,7 +38,7 @@
 
 <script lang="ts">
   import { defineComponent, PropType } from 'vue';
-  import Product from '../models/ProductModel';
+  import Product from '../../models/ProductModel';
 
   export default defineComponent({
     name: 'v-cart-item',
@@ -70,7 +70,7 @@
 </script>
 
 <style lang="scss">
-  @import '../static/style/vars';
+  @import '../../static/style/vars';
 
   .v-cart-item {
     display: flex;

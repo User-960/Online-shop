@@ -2,7 +2,7 @@
   <div class="v-catalog-item">
     <img
       class="v-catalog-item__image"
-      :src="require('../static/images/catalog/' + product_data.image)"
+      :src="require('../../static/images/catalog/' + product_data.image)"
       alt="img"
     />
     <p class="v-catalog-item__name">{{ product_data.name }}</p>
@@ -18,7 +18,7 @@
 
 <script lang="ts">
   import { defineComponent, PropType } from 'vue';
-  import Product from '../models/ProductModel';
+  import Product from '../../models/ProductModel';
 
   export default defineComponent({
     name: 'v-catalog-item',
@@ -44,7 +44,7 @@
 </script>
 
 <style lang="scss">
-@import '../static/style/vars';
+@import '../../static/style/vars';
 
 .v-catalog-item {
   flex-basis: 25%;
