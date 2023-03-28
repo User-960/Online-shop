@@ -12,7 +12,21 @@
     </div>
     <div class="v-cart-item__quantity">
       <p>Quantity: </p>
-      {{ cart_item_data.quantity }}
+      <span class="v-cart-item__quantity-span">
+        <div
+          class="quantity__btn"
+          @click="decrementItem"
+        >
+          <span>-</span>
+        </div>
+        {{ cart_item_data.quantity }}
+        <div
+          class="quantity__btn"
+          @click="incrementItem"
+        >
+          <span>+</span>
+        </div>
+      </span>
     </div>
     <button @click="deleteFromCart">Delete</button>
   </div>
@@ -32,7 +46,7 @@
         }
       }
     },
-    emits: ['deleteFromCart'],
+    emits: ['deleteFromCart', 'increment', 'decrement'],
     data: () => ({
 
     }),
@@ -40,6 +54,12 @@
     methods: {
       deleteFromCart() {
         this.$emit('deleteFromCart');
+      },
+      incrementItem() {
+        this.$emit('increment');
+      },
+      decrementItem() {
+        this.$emit('decrement');
       }
     }
   });
@@ -59,5 +79,23 @@
     &__img {
       max-width: 50px;
     }
+    &__quantity-span {
+      display: flex;
+      width: 80px;
+      justify-content: space-between;
+      user-select: none;
+    }
+  }
+  .quantity__btn {
+    cursor: pointer;
+    color: $color-white;
+    border-radius: 30px;
+    background-color: $color-black;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
   }
 </style>

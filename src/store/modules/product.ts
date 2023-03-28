@@ -31,6 +31,12 @@ export default {
     },
     DELETE_FROM_CART({commit}, index: number): void {
       commit('REMOVE_FROM_CART', index);
+    },
+    INCREMENT_CART_ITEM({commit}, index: number) {
+      commit('INCREMENT', index);
+    },
+    DECREMENT_CART_ITEM({commit}, index: number) {
+      commit('DECREMENT', index);
     }
   },
   
@@ -56,6 +62,14 @@ export default {
     },
     REMOVE_FROM_CART: (state: StateRepo, index: number): void => {
       state.cart.splice(index, 1);
+    },
+    INCREMENT: (state: StateRepo, index: number): void => {
+      state.cart[index].quantity++;
+    },
+    DECREMENT: (state: StateRepo, index: number): void => {
+      if (state.cart[index].quantity > 1) {
+        state.cart[index].quantity--;
+      }
     }
   },
 
