@@ -1,8 +1,13 @@
 <template>
   <div class="v-cart">
     <router-link :to="{ name: 'catalog' }">
-      <div class="v-catalog__link_to_cart">
+      <div class="v-catalog__link_to_shop">
         Back to Catalog
+        <img
+          class="v-catalog__link_to_shop_img"
+          :src="require('../static/images/shop-icon.svg')"
+          alt="shop"
+        />
       </div>
     </router-link>
     <h1 class="v-cart__title">
@@ -87,7 +92,7 @@
 
 .v-cart {
   &__title {
-    margin: 20px auto;
+    margin: 50px auto;
     text-align: center;
   }
   &__cart_empty {
@@ -105,6 +110,25 @@
   }
   &__total-number {
     margin-left: 8px;
+  }
+}
+.v-catalog__link{
+  &_to_shop {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: $spacing-padding;
+    border: 1px solid #aeaeae;
+    display: flex;
+    justify-content: space-around;
+    width: 155px;
+    color: $color-black;
+    font-size: 14px;
+  }
+  &_to_shop_img {
+    width: 24px;
+    height: 24px;
+    margin-left: 10px;
   }
 }
 </style>

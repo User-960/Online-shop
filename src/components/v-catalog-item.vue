@@ -57,5 +57,11 @@
   &__image {
     width: 100px;
   }
+  &__name {
+    margin-top: 10px;
+  }
+  &__price {
+    margin: 10px 0px;
+  }
 }
 </style>

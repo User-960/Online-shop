@@ -2,6 +2,11 @@
   <div class="v-catalog">
     <router-link :to="{ name: 'cart' }">
       <div class="v-catalog__link_to_cart">
+        <img
+          class="v-catalog__link_to_cart_img"
+          :src="require('../static/images/cart-icon.svg')"
+          alt="cart"
+        />
         Cart: {{ CART.length }}
       </div>
     </router-link>
@@ -73,11 +78,18 @@
     position: absolute;
     top: 10px;
     right: 10px;
-    padding: $spacing-padding * 2;
+    padding: $spacing-padding;
     border: 1px solid #aeaeae;
+    display: flex;
+    justify-content: space-around;
+    width: 130px;
+    color: $color-black;
+  }
+  &__link_to_cart_img {
+    width: 27px;
   }
   &__title {
-    margin: 20px auto;
+    margin: 50px auto;
     text-align: center;
   }
 }
