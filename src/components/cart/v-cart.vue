@@ -94,10 +94,12 @@
   &__title {
     margin: 50px auto;
     text-align: center;
+    font-family: 'Montserrat';
   }
   &__cart_empty {
     text-align: center;
-    font-size: 16px;
+    font-size: 24px;
+    margin: $spacing-margin * 2 0px;
   }
   &__total {
     font-weight: bold;
@@ -121,13 +123,14 @@
     border: 1px solid #aeaeae;
     display: flex;
     justify-content: space-around;
-    width: 155px;
+    width: 164px;
     color: $color-black;
     font-size: 14px;
+    font-family: 'Montserrat';
   }
   &_to_shop_img {
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
     margin-left: 10px;
   }
 }

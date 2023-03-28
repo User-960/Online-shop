@@ -84,6 +84,7 @@
     justify-content: space-around;
     width: 130px;
     color: $color-black;
+    font-family: 'Montserrat';
   }
   &__link_to_cart_img {
     width: 27px;
@@ -91,6 +92,7 @@
   &__title {
     margin: 50px auto;
     text-align: center;
+    font-family: 'Montserrat';
   }
 }
 </style>
