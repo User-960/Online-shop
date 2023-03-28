@@ -10,9 +10,17 @@
         Cart: {{ CART.length }}
       </div>
     </router-link>
+
     <h1 class="v-catalog__title">
       Catalog
     </h1>
+
+    <vSelect 
+      :options="options"
+      :selected="selected"
+      @select="optionSelect"
+    />
+
     <div class="v-catalog__list">
       <vCatalogItem 
         v-for="product in PRODUCTS"
@@ -27,17 +35,26 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { mapGetters, mapActions } from 'vuex';
+  import vSelect from '../v-select.vue';
   import vCatalogItem from './v-catalog-item.vue';
   import Product from '../../models/ProductModel';
 
   export default defineComponent({
     name: 'v-catalog',
     components: {
-      vCatalogItem
+      vCatalogItem,
+      vSelect
     },
     // props: {},
     data: () => ({
-      
+      options: [
+        { name: 'Option 1', value: 1 },
+        { name: 'Option 2', value: 2 },
+        { name: 'Option 3', value: 3 },
+        { name: 'Option 4', value: 4 },
+        { name: 'Option 5', value: 5 }
+      ],
+      selected: 'Select'
     }),
     computed: {
       ...mapGetters([
@@ -60,6 +77,9 @@
       ]),
       addToCart(data: Product): void {
         this.ADD_TO_CART(data);
+      },
+      optionSelect(option) {
+        this.selected = option.name;
       }
     },
   });
