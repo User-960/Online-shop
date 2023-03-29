@@ -16,14 +16,14 @@
     </h1>
 
     <vSelect 
-      :options="options"
+      :options="categories"
       :selected="selected"
-      @select="optionSelect"
+      @select="sortByCategories"
     />
 
     <div class="v-catalog__list">
       <vCatalogItem 
-        v-for="product in PRODUCTS"
+        v-for="product in filteredProducts"
         :key="product.article"
         :product_data="product"
         @add-to-cart="addToCart"
@@ -38,6 +38,7 @@
   import vSelect from '../v-select.vue';
   import vCatalogItem from './v-catalog-item.vue';
   import Product from '../../models/ProductModel';
+  import SelectOption from '../../models/SelectModel';
 
   export default defineComponent({
     name: 'v-catalog',
@@ -47,20 +48,26 @@
     },
     // props: {},
     data: () => ({
-      options: [
-        { name: 'Option 1', value: 1 },
-        { name: 'Option 2', value: 2 },
-        { name: 'Option 3', value: 3 },
-        { name: 'Option 4', value: 4 },
-        { name: 'Option 5', value: 5 }
+      categories: [
+        { name: 'All', value: 'all' },
+        { name: 'Man', value: 'm' },
+        { name: 'Woman', value: 'w' }
       ],
-      selected: 'Select'
+      selected: 'All',
+      sortedProducts: []
     }),
     computed: {
       ...mapGetters([
         'PRODUCTS',
         'CART'
-      ])
+      ]),
+      filteredProducts() {
+        if (this.sortedProducts.length) {
+          return this.sortedProducts;
+        } else {
+          return this.PRODUCTS;
+        }
+      }
     },
     mounted() {
       this.GET_PRODUCTS_FROM_API()
@@ -78,8 +85,15 @@
       addToCart(data: Product): void {
         this.ADD_TO_CART(data);
       },
-      optionSelect(option) {
-        this.selected = option.name;
+      sortByCategories(category: SelectOption) {
+        this.sortedProducts = [];
+        let vm = this;
+        this.PRODUCTS.map(function(item: Product) {
+          if (item.category === category.name) {
+            vm.sortedProducts.push(item);
+          }
+        });
+        this.selected = category.name;
       }
     },
   });
@@ -91,8 +105,9 @@
   &__list {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    margin-top: 100px;
   }
   &__link_to_cart {
     position: absolute;
@@ -110,7 +125,7 @@
     width: 27px;
   }
   &__title {
-    margin: 50px auto;
+    margin: 50px auto 20px ;
     text-align: center;
     font-family: 'Montserrat';
   }

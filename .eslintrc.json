@@ -54,6 +54,7 @@
     "@typescript-eslint/no-var-requires": "off", // disallow require statements except in import statements.
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/ban-types": "off", // Disallow certain types
+    "@typescript-eslint/no-this-alias": "off", // Disallow aliasing this
 
     // This rule aims to enforce the self-closing sign as the configured style.
     "vue/html-self-closing": ["error", {

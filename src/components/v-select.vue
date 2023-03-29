@@ -77,6 +77,9 @@
     border-bottom: 1px solid #aeaeae;
     cursor: pointer;
   }
+  &__options {
+    position: absolute;
+  }
   &__option {
     cursor: pointer;
     width: 80px;
