@@ -5,5 +5,6 @@ export default interface Product {
   article: string;
   available: boolean;
   category: string;
+  description: string,
   quantity?: number;
 }

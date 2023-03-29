@@ -54,14 +54,15 @@ body {
 }
 
 .btn {
-  padding: $spacing-padding $spacing-padding * 2;
+  padding: $spacing-padding $spacing-padding;
   background-color: $color-green;
   color: $color-white;
   border: none;
   transition-duration: .5s;
   border-radius: $border-radius;
-  font-size: 15px;
+  font-size: 14px;
   font-family: 'Montserrat';
+  cursor: pointer;
 }
 
 .btn:hover {
