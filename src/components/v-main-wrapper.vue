@@ -24,4 +24,10 @@
     margin: 0 auto;
     display: flex;
   }
+  
+  @media (max-width: 540px) {
+  .v-main-wrapper {
+    flex-direction: column;
+  }
+}
 </style>

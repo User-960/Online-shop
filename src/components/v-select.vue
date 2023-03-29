@@ -1,33 +1,24 @@
 <template>
-  <div class="v-filter">
-    <h3 class="v-filter__title">
-      Filter
-    </h3>
-
-    <div class="v-filter__category">
-      <div class="v-select">
-        <p
-          class="v-select__title"
-          @click="areOptionVisiable = !areOptionVisiable"
-        >
-          Category: {{ selected }}
-        </p>
-        <div
-          v-if="areOptionVisiable || is_expanded"
-          class="v-select__options"
-        >
-          <p
-            v-for="option in options"
-            :key="option.value"
-            class="v-select__option"
-            @click="selectOption(option)"
-          >
-            {{ option.name }}
-          </p>
-        </div>
-      </div>
+  <div class="v-select">
+    <p
+      class="v-select__title"
+      @click="areOptionVisiable = !areOptionVisiable"
+    >
+      Category: {{ selected }}
+    </p>
+    <div
+      v-if="areOptionVisiable || is_expanded"
+      class="v-select__options"
+    >
+      <p
+        v-for="option in options"
+        :key="option.value"
+        class="v-select__option"
+        @click="selectOption(option)"
+      >
+        {{ option.name }}
+      </p>
     </div>
-    <hr />
   </div>
 </template>
 
@@ -81,21 +72,8 @@
 <style lang="scss">
 @import '../static/style/vars';
 
-.v-filter {
-  position: relative;
-  top: 190px;
-  margin-left: 20px;
-  &__title {
-    font-size: 22px;
-    color: $color-black;
-    font-family: 'Montserrat';
-    margin-bottom: 20px;
-    font-weight: bold;
-  }
-}
 .v-select {
   width: 150px;
-  margin: 0 auto;
   position: relative;
   font-family: 'Montserrat';
   &__title {

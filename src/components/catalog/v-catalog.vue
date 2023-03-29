@@ -1,10 +1,46 @@
 <template>
-  <vSelect 
-    :options="categories"
-    :selected="selected"
-    :is_expanded="IS_DESKTOP"
-    @select="sortByCategories"
-  />
+  <div class="v-filter">
+    <h3 class="v-filter__title">
+      Filter
+    </h3>
+    <div class="v-filter__category">
+      <vSelect 
+        :options="categories"
+        :selected="selected"
+        :is_expanded="IS_DESKTOP"
+        @select="sortByCategories"
+      />
+    </div>
+    <div class="v-filter__range">
+      <div class="v-filter__range-title">
+        Price
+      </div>
+      <div class="v-filter__range-values">
+        <p>Min: {{ minPrice }}</p>
+        <p>Max: {{ maxPrice }}</p>
+      </div>
+      <div class="v-filter__range-slider">
+        <input
+          v-model.number="minPrice"
+          class="v-filter__range-slider-input"
+          type="range"
+          min="0"
+          max="200"
+          step="10"
+          @change="setRangeSlider()"
+        />
+        <input
+          v-model.number="maxPrice"
+          class="v-filter__range-slider-input"
+          type="range"
+          min="0"
+          max="200"
+          step="10"
+          @change="setRangeSlider()"
+        />
+      </div>
+    </div>
+  </div>
   <div class="v-catalog">
     <router-link :to="{ name: 'cart' }">
       <div class="v-catalog__link_to_cart">
@@ -54,7 +90,9 @@
         { name: 'Woman', value: 'w' }
       ],
       selected: 'All',
-      sortedProducts: []
+      sortedProducts: [],
+      minPrice: 0,
+      maxPrice: 200
     }),
     computed: {
       ...mapGetters([
@@ -75,6 +113,7 @@
         .then((response) => {
           if (response.data) {
             console.log('Data arrived!');
+            this.sortByCategories();
           }
         });
     },
@@ -87,14 +126,26 @@
         this.ADD_TO_CART(data);
       },
       sortByCategories(category: SelectOption) {
-        this.sortedProducts = [];
         let vm = this;
-        this.PRODUCTS.map(function(item: Product) {
-          if (item.category === category.name) {
-            vm.sortedProducts.push(item);
-          }
+        this.sortedProducts = [...this.PRODUCTS];
+        this.sortedProducts = this.sortedProducts.filter(function(item: Product) {
+          return item >= vm.minPrice || item.price <= vm.maxPrice;
         });
-        this.selected = category.name;
+
+        if (category) {
+          this.sortedProducts = this.sortedProducts.filter(function (item: Product) {
+            vm.selected = category.name;
+            return item.category === category.name;
+          });
+        }
+      },
+      setRangeSlider() {
+      if (this.minPrice > this.maxPrice) {
+          let tmp = this.maxPrice;
+          this.maxPrice = this.minPrice;
+          this.minPrice = tmp;
+        }
+        this.sortByCategories();
       }
     },
   });
@@ -131,6 +182,65 @@
     margin: 50px auto 20px ;
     text-align: center;
     font-family: 'Montserrat';
+  }
+}
+
+.v-filter {
+  position: relative;
+  top: 190px;
+  margin-left: 20px;
+  &__title {
+    font-size: 22px;
+    color: $color-black;
+    font-family: 'Montserrat';
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+  &__category {
+    padding-top: 10px;
+    border-top: 1px solid #aeaeae;
+  }
+}
+
+.v-filter__range {
+  padding-top: 10px;
+  border-top: 1px solid #aeaeae;
+  position: relative;
+  width: 200px;
+  top: 150px;
+  font-family: 'Montserrat';
+  &-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: $color-black;
+    cursor: pointer;
+  }
+  &-slider {
+    width: 200px;
+    margin: auto 16px;
+    text-align: center;
+    position: relative;
+  }
+  &-slider svg, 
+  &-slider input[type=range] {
+    position: absolute;
+    top: 40px;
+    left: -20px;
+  }
+  &-values {
+    width: 160px;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 40;
+    left: 0;
+  }
+  &-slider-input[type=range]::-webkit-slider-thumb {
+    z-index: 2;
+    position: relative;
+    top: 2px;
+    margin-top: -7px;
   }
 }
 </style>
