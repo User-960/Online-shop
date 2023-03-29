@@ -48,6 +48,7 @@
 
 .v-catalog-item {
   flex-basis: 25%;
+  min-width: 220px;
   box-shadow: 0 0 8px 0 #e0e0e0;
   padding: $spacing-padding * 2;
   margin: $spacing-margin * 2 $spacing-margin * 4;

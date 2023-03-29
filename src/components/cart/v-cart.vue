@@ -91,6 +91,7 @@
 @import '../../static/style/vars';
 
 .v-cart {
+  width: 100%;
   &__title {
     margin: 50px auto;
     text-align: center;
@@ -117,16 +118,18 @@
 .v-catalog__link{
   &_to_shop {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 30px;
+    right: 30px;
     padding: $spacing-padding;
     border: 1px solid #aeaeae;
+    border-radius: 30px;
     display: flex;
     justify-content: space-around;
-    width: 164px;
-    color: $color-black;
+    width: 170px;
     font-size: 14px;
+    color: $color-black;
     font-family: 'Montserrat';
+    background-color: #dedede;
   }
   &_to_shop_img {
     width: 22px;

@@ -1,4 +1,10 @@
 <template>
+  <vSelect 
+    :options="categories"
+    :selected="selected"
+    :is_expanded="IS_DESKTOP"
+    @select="sortByCategories"
+  />
   <div class="v-catalog">
     <router-link :to="{ name: 'cart' }">
       <div class="v-catalog__link_to_cart">
@@ -14,13 +20,6 @@
     <h1 class="v-catalog__title">
       Catalog
     </h1>
-
-    <vSelect 
-      :options="categories"
-      :selected="selected"
-      :is_expanded="IS_DESKTOP"
-      @select="sortByCategories"
-    />
 
     <div class="v-catalog__list">
       <vCatalogItem 
@@ -107,21 +106,23 @@
   &__list {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     margin-top: 100px;
   }
   &__link_to_cart {
-    position: absolute;
-    top: 10px;
-    right: 10px;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
     padding: $spacing-padding;
     border: 1px solid #aeaeae;
+    border-radius: 30px;
     display: flex;
     justify-content: space-around;
     width: 130px;
     color: $color-black;
     font-family: 'Montserrat';
+    background-color: #dedede;
   }
   &__link_to_cart_img {
     width: 27px;
