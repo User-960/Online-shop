@@ -2,12 +2,16 @@ import axios from 'axios';
 import Product from '../../models/ProductModel';
 
 interface StateRepo {
+  isMobile: boolean,
+  isDesktop: boolean,
   products: Array<Product>,
   cart: Array<Product>
 }
 
 export default {
   state: {
+    isMobile: false,
+    isDesktop: true,
     products: [] as Product[],
     cart: [] as Product[]
   },
@@ -37,6 +41,12 @@ export default {
     },
     DECREMENT_CART_ITEM({commit}, index: number) {
       commit('DECREMENT', index);
+    },
+    SET_MOBILE({commit}) {
+      commit('SWITCH_MOBILE');
+    },
+    SET_DESKTOP({commit}) {
+      commit('SWITCH_DESKTOP');
     }
   },
   
@@ -70,7 +80,15 @@ export default {
       if (state.cart[index].quantity > 1) {
         state.cart[index].quantity--;
       }
-    }
+    },
+    SWITCH_MOBILE: (state: StateRepo) => {
+      state.isMobile = true;
+      state.isDesktop = false;
+    },
+    SWITCH_DESKTOP: (state: StateRepo) => {
+      state.isDesktop = true;
+      state.isMobile = false;
+    },
   },
 
   getters: {
@@ -79,6 +97,12 @@ export default {
     },
     CART(state: StateRepo): Product[] {
       return state.cart;
+    },
+    IS_MOBILE(state: StateRepo) {
+      return state.isMobile;
+    },
+    IS_DESKTOP(state: StateRepo) {
+      return state.isDesktop;
     }
   }
 };

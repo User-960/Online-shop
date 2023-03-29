@@ -18,6 +18,7 @@
     <vSelect 
       :options="categories"
       :selected="selected"
+      :is_expanded="IS_DESKTOP"
       @select="sortByCategories"
     />
 
@@ -59,7 +60,8 @@
     computed: {
       ...mapGetters([
         'PRODUCTS',
-        'CART'
+        'CART',
+        'IS_DESKTOP'
       ]),
       filteredProducts() {
         if (this.sortedProducts.length) {

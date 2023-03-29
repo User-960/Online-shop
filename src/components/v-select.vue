@@ -7,7 +7,7 @@
       {{ selected }}
     </p>
     <div
-      v-if="areOptionVisiable"
+      v-if="areOptionVisiable || is_expanded"
       class="v-select__options"
     >
       <p
@@ -40,6 +40,10 @@
         default() {
           return '';
         }
+      },
+      is_expanded: {
+        type: Boolean,
+        default: false
       }
     },
     emits: ['select'],
