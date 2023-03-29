@@ -21,15 +21,6 @@
       </div>
       <div class="v-filter__range-slider">
         <input
-          v-model.number="minPrice"
-          class="v-filter__range-slider-input"
-          type="range"
-          min="0"
-          max="200"
-          step="10"
-          @change="setRangeSlider()"
-        />
-        <input
           v-model.number="maxPrice"
           class="v-filter__range-slider-input"
           type="range"
@@ -189,6 +180,7 @@
   position: relative;
   top: 190px;
   margin-left: 20px;
+  margin-right: 20px;
   &__title {
     font-size: 22px;
     color: $color-black;
