@@ -7,7 +7,7 @@
     />
     <div class="v-cart-item__info">
       <p class="v-cart-item__info_name"><span>Product: </span>{{ cart_item_data.name }}</p>
-      <p class="v-cart-item__info_price"><span>Price: </span>{{ cart_item_data.price }}</p>
+      <p class="v-cart-item__info_price"><span>Price: </span>{{ cart_item_data.price.toLocaleString('en-US', { style: 'currency', currency: 'USD' }) }}</p>
     </div>
     <div class="v-cart-item__quantity">
       <p>Quantity: </p>

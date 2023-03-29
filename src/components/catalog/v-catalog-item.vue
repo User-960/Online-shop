@@ -14,7 +14,7 @@
       />
       <div class="v-catalog-item__popup-info">
         <p class="v-catalog-item__popup-name"><span>Name: </span>{{ product_data.name }}</p>
-        <p class="v-catalog-item__popup-price"><span>Price: </span>{{ product_data.price }}</p>
+        <p class="v-catalog-item__popup-price"><span>Price: </span>{{ product_data.price.toLocaleString('en-US', { style: 'currency', currency: 'USD' }) }} USD</p>
         <p class="v-catalog-item__popup-category"><span>Category: </span>{{ product_data.category }}</p>
         <p class="v-catalog-item__popup-description"><span>Description: </span>{{ product_data.description }}</p>
       </div>
@@ -26,7 +26,7 @@
       alt="img"
     />
     <p class="v-catalog-item__name">{{ product_data.name }}</p>
-    <p class="v-catalog-item__price">Price: {{ product_data.price }}</p>
+    <p class="v-catalog-item__price">Price: <span>{{ product_data.price.toLocaleString('en-US', { style: 'currency', currency: 'USD' }) }}</span></p>
     <div class="v-catalog-item__btns">
       <button
         class="v-catalog-item__show_info btn"
@@ -103,11 +103,18 @@
   &__price {
     margin: 10px 0px;
   }
+  &__price span {
+    color: $color-black;
+  }
   &__btns {
     display: flex;
   }
   &__show_info {
     margin-right: 10px;
+    background-color: $color-grey;
+  }
+  &__show_info:hover {
+    background-color: $color-dark;
   }
   &__popup-name,
   &__popup-price,

@@ -54,7 +54,7 @@ body {
 }
 
 .btn {
-  padding: $spacing-padding $spacing-padding;
+  padding: $spacing-padding - 4 $spacing-padding;
   background-color: $color-green;
   color: $color-white;
   border: none;

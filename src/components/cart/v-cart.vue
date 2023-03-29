@@ -29,7 +29,7 @@
     />
     <div class="v-cart__total">
       <p class="v-cart__total-text">Total:</p>
-      <p class="v-cart__total-number">{{ cartTotalCost }} USD</p>
+      <p class="v-cart__total-number">{{ cartTotalCost.toLocaleString('en-US', { style: 'currency', currency: 'USD' }) }}</p>
     </div>
   </div>
 </template>
