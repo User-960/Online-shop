@@ -29,7 +29,7 @@
     />
     <div class="v-cart__total">
       <p class="v-cart__total-text">Total:</p>
-      <p class="v-cart__total-number">{{ cartTotalCost.toLocaleString('en-US', { style: 'currency', currency: 'USD' }) }}</p>
+      <p class="v-cart__total-number">{{ toFix(cartTotalCost) }}</p>
     </div>
   </div>
 </template>
@@ -82,6 +82,10 @@
       },
       decrement(index: number): void {
         this.DECREMENT_CART_ITEM(index);
+      },
+      toFix(value): string {
+        value.toFixed(2);
+        return value.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
       }
     }
   });
@@ -110,6 +114,7 @@
     padding: 10px 0;
     font-size: 20px;
     border-top: 1px solid $color-dark;
+    font-family: 'Montserrat';
   }
   &__total-number {
     margin-left: 8px;

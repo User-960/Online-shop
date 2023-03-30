@@ -14,7 +14,7 @@
       />
       <div class="v-catalog-item__popup-info">
         <p class="v-catalog-item__popup-name"><span>Name: </span>{{ product_data.name }}</p>
-        <p class="v-catalog-item__popup-price"><span>Price: </span>{{ product_data.price.toLocaleString('en-US', { style: 'currency', currency: 'USD' }) }} USD</p>
+        <p class="v-catalog-item__popup-price"><span>Price: </span>{{ toFix(product_data.price) }} </p>
         <p class="v-catalog-item__popup-category"><span>Category: </span>{{ product_data.category }}</p>
         <p class="v-catalog-item__popup-description"><span>Description: </span>{{ product_data.description }}</p>
       </div>
@@ -26,7 +26,7 @@
       alt="img"
     />
     <p class="v-catalog-item__name">{{ product_data.name }}</p>
-    <p class="v-catalog-item__price">Price: <span>{{ product_data.price.toLocaleString('en-US', { style: 'currency', currency: 'USD' }) }}</span></p>
+    <p class="v-catalog-item__price">Price: <span>{{ toFix(product_data.price) }}</span></p>
     <div class="v-catalog-item__btns">
       <button
         class="v-catalog-item__show_info btn"
@@ -76,6 +76,19 @@
       },
       closeInfoPopup() {
         this.isInfoPopupVisiable = false;
+      },
+      toFormatPrice(value): string {
+        if (value >= 1000) {
+          let parts = value.toFixed(2).toString().split('.');
+          parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+          return parts.join('.');
+        } else {
+          return value.toFixed(2);
+        }
+      },
+      toFix(value): string {
+        value.toFixed(2);
+        return value.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
       }
     }
   });
