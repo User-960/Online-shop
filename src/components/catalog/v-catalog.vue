@@ -35,6 +35,7 @@
   <div class="v-catalog">
     <v-notification 
       :messages="messages"
+      :timeout="3000"
     />
 
     <router-link :to="{ name: 'cart' }">
@@ -90,9 +91,7 @@
       sortedProducts: [],
       minPrice: 0,
       maxPrice: 200,
-      messages: [
-        { name: 'notification name', id: Date.now().toLocaleString()}
-      ]
+      messages: []
     }),
     computed: {
       ...mapGetters([
@@ -123,7 +122,13 @@
         'ADD_TO_CART'
       ]),
       addToCart(data: Product): void {
-        this.ADD_TO_CART(data);
+        this.ADD_TO_CART(data)
+          .then(() => {
+            let timeStamp = Date.now().toLocaleString();
+            this.messages.unshift(
+              { name: 'Product added to cart', icon: 'check_circle', id: timeStamp }
+            );
+          });
       },
       sortByCategories(category: SelectOption) {
         let vm = this;
