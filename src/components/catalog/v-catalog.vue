@@ -49,10 +49,6 @@
       </div>
     </router-link>
 
-    <h1 class="v-catalog__title">
-      Catalog
-    </h1>
-
     <div class="v-catalog__list">
       <vCatalogItem 
         v-for="product in filteredProducts"
@@ -159,7 +155,9 @@
 <style lang="scss">
 @import '../../static/style/vars';
 .v-catalog {
+  margin-top: 90px;
   &__list {
+    position: relative;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -183,22 +181,17 @@
   &__link_to_cart_img {
     width: 27px;
   }
-  &__title {
-    margin: 50px auto 20px ;
-    text-align: center;
-    font-family: 'Montserrat';
-  }
 }
 
 .v-filter {
   position: relative;
-  top: 190px;
-  margin-left: 20px;
-  margin-right: 20px;
+  top: 90px;
+  margin-right: 60px;
   &__title {
     font-size: 22px;
     color: $color-black;
     font-family: 'Montserrat';
+    margin-top: 116px;
     margin-bottom: 20px;
     font-weight: bold;
   }
