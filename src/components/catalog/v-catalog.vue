@@ -33,6 +33,10 @@
     </div>
   </div>
   <div class="v-catalog">
+    <v-notification 
+      :messages="messages"
+    />
+
     <router-link :to="{ name: 'cart' }">
       <div class="v-catalog__link_to_cart">
         <img
@@ -66,12 +70,14 @@
   import vCatalogItem from './v-catalog-item.vue';
   import Product from '../../models/ProductModel';
   import SelectOption from '../../models/SelectModel';
+  import vNotification from '../notifications/v-notification.vue';
 
   export default defineComponent({
     name: 'v-catalog',
     components: {
       vCatalogItem,
-      vSelect
+      vSelect,
+      vNotification
     },
     // props: {},
     data: () => ({
@@ -83,7 +89,10 @@
       selected: 'All',
       sortedProducts: [],
       minPrice: 0,
-      maxPrice: 200
+      maxPrice: 200,
+      messages: [
+        { name: 'notification name', id: Date.now().toLocaleString()}
+      ]
     }),
     computed: {
       ...mapGetters([
