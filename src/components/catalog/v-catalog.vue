@@ -93,7 +93,8 @@
       ...mapGetters([
         'PRODUCTS',
         'CART',
-        'IS_DESKTOP'
+        'IS_DESKTOP',
+        'SEARCH_VALUE'
       ]),
       filteredProducts() {
         if (this.sortedProducts.length) {
@@ -103,12 +104,17 @@
         }
       }
     },
+    watch: {
+      SEARCH_VALUE() {
+        this.sortProductsBySearchValue(this.SEARCH_VALUE);
+      }
+    },
     mounted() {
       this.GET_PRODUCTS_FROM_API()
         .then((response) => {
           if (response.data) {
-            console.log('Data arrived!');
             this.sortByCategories();
+            this.sortProductsBySearchValue(this.SEARCH_VALUE);
           }
         });
     },
@@ -147,18 +153,27 @@
           this.minPrice = tmp;
         }
         this.sortByCategories();
+      },
+      sortProductsBySearchValue(value: string) {
+        this.sortedProducts = [...this.PRODUCTS];
+        if (value) {
+          this.sortedProducts = this.sortedProducts.filter(function (item: Product) {
+            return item.name.toLowerCase().includes(value.toLowerCase());
+          });
+        } else {
+          this.sortedProducts = this.PRODUCTS;
+        }
       }
-    },
+    }
   });
 </script>
 
 <style lang="scss">
 @import '../../static/style/vars';
 .v-catalog {
-  margin-left: 220px;
-  max-width: 950px;
+  margin-left: 50px;
+  max-width: 1000px;
   &__list {
-    position: relative;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -185,8 +200,6 @@
 }
 
 .v-filter {
-  position: absolute;
-  left: 0;
   &__title {
     font-size: 22px;
     color: $color-black;

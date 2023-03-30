@@ -37,7 +37,7 @@
   position: relative;
   display: flex;
   justify-content: space-between;
-  padding-top: 100px;
+  margin-top: 100px;
   right: 0;
   left: 0;
   width: 100%;

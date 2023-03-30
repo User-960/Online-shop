@@ -2,6 +2,7 @@ import axios from 'axios';
 import Product from '../../models/ProductModel';
 
 interface StateRepo {
+  searchValue: string,
   isMobile: boolean,
   isDesktop: boolean,
   products: Array<Product>,
@@ -10,6 +11,7 @@ interface StateRepo {
 
 export default {
   state: {
+    searchValue: '',
     isMobile: false,
     isDesktop: true,
     products: [] as Product[],
@@ -47,6 +49,9 @@ export default {
     },
     SET_DESKTOP({commit}) {
       commit('SWITCH_DESKTOP');
+    },
+    GET_SEARCH_VALUE_TO_VUEX: ({commit}, value: string) => {
+      commit('SET_SEARCH_VALUE_TO_VUEX', value);
     }
   },
   
@@ -89,6 +94,9 @@ export default {
       state.isDesktop = true;
       state.isMobile = false;
     },
+    SET_SEARCH_VALUE_TO_VUEX: (state: StateRepo, value: string) => {
+      state.searchValue = value;
+    }
   },
 
   getters: {
@@ -103,6 +111,9 @@ export default {
     },
     IS_DESKTOP(state: StateRepo) {
       return state.isDesktop;
+    },
+    SEARCH_VALUE(state: StateRepo) {
+      return state.searchValue;
     }
   }
 };
