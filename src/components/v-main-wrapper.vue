@@ -27,14 +27,19 @@
 
 <style lang="scss">
 .v-main-wrapper {
+  position: relative;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+  max-width: 1200px;
 }
 .main__inner {
+  position: relative;
   display: flex;
   justify-content: space-between;
-  max-width: 1200px;
+  padding-top: 100px;
+  right: 0;
+  left: 0;
   width: 100%;
 }
 </style>

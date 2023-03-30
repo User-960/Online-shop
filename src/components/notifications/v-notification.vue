@@ -85,7 +85,7 @@
 
 .v-notification {
   position: fixed;
-  top: 80px;
+  top: 100px;
   right: 16px;
   z-index: 10;
   &__messages-list {
@@ -93,7 +93,7 @@
     flex-direction: column;
   }
   &__content {
-    padding: 16px;
+    padding: 8px;
     border-radius: 4px;
     color: #fff;
     display: flex;
@@ -118,7 +118,7 @@
   }
   &__content-text span {
     margin-right: 12px;
-    font-size: 16px;
+    font-size: 15px;
     margin-top: 2px;
     font-family: 'Montserrat';
   }

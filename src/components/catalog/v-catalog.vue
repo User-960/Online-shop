@@ -155,7 +155,8 @@
 <style lang="scss">
 @import '../../static/style/vars';
 .v-catalog {
-  margin-top: 90px;
+  margin-left: 220px;
+  max-width: 950px;
   &__list {
     position: relative;
     display: flex;
@@ -184,9 +185,8 @@
 }
 
 .v-filter {
-  position: relative;
-  top: 90px;
-  margin-right: 60px;
+  position: absolute;
+  left: 0;
   &__title {
     font-size: 22px;
     color: $color-black;
