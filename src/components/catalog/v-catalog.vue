@@ -55,6 +55,7 @@
         :key="product.article"
         :product_data="product"
         @add-to-cart="addToCart"
+        @product-click="productClick"
       />
     </div>
   </div>
@@ -163,6 +164,9 @@
         } else {
           this.sortedProducts = this.PRODUCTS;
         }
+      },
+      productClick(article: string) {
+        this.$router.push({name: 'product', query: { product: article }});
       }
     }
   });

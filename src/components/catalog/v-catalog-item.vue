@@ -1,5 +1,7 @@
 <template>
-  <div class="v-catalog-item">
+  <div
+    class="v-catalog-item"
+  >
     <v-popup 
       v-if="isInfoPopupVisiable"
       left_btn_title="Add to Cart"
@@ -24,6 +26,7 @@
       class="v-catalog-item__image"
       :src="require('../../static/images/catalog/' + product_data.image)"
       alt="img"
+      @click="productClick"
     />
     <p class="v-catalog-item__name">{{ product_data.name }}</p>
     <p class="v-catalog-item__price">Price: <span>{{ toFix(product_data.price) }}</span></p>
@@ -62,7 +65,7 @@
         }
       }
     },
-    emits: ['addToCart'],
+    emits: ['addToCart', 'productClick'],
     data: () => ({
       isInfoPopupVisiable: false,
     }),
@@ -70,6 +73,9 @@
     methods: {
       addToCart() {
         this.$emit('addToCart', this.product_data);
+      },
+      productClick() {
+        this.$emit('productClick', this.product_data.article);
       },
       showPopupInfo() {
         this.isInfoPopupVisiable = true;
@@ -86,7 +92,7 @@
           return value.toFixed(2);
         }
       },
-      toFix(value): string {
+      toFix(value: number): string {
         value.toFixed(2);
         return value.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
       }

@@ -72,7 +72,6 @@
         if (this.messages.length) {
           setTimeout(() => {
             vm.messages.splice(vm.messages.length - 1, 1);
-            console.log('Problem');
           }, vm.timeout);
         }
       }
