@@ -172,7 +172,7 @@
 @import '../../static/style/vars';
 .v-catalog {
   margin-left: 50px;
-  max-width: 1000px;
+  justify-self: flex-start;
   &__list {
     display: flex;
     flex-wrap: wrap;

@@ -123,7 +123,7 @@
 .v-catalog__link{
   &_to_shop {
     position: absolute;
-    top: 30px;
+    top: 40px;
     right: 30px;
     padding: $spacing-padding;
     border: 1px solid #aeaeae;

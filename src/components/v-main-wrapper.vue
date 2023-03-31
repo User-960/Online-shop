@@ -1,10 +1,8 @@
 <template>
   <div class="v-main-wrapper">
     <v-header />
-    <div class="container">
-      <div class="main__inner">
-        <router-view />
-      </div>
+    <div class="main__inner">
+      <router-view />
     </div>
   </div>
 </template>
@@ -32,11 +30,11 @@
   display: flex;
   flex-direction: column;
   max-width: 1200px;
+  padding: 0px 15px;
 }
 .main__inner {
   position: relative;
   display: flex;
-  justify-content: space-between;
   margin-top: 100px;
   right: 0;
   left: 0;
