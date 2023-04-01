@@ -115,6 +115,7 @@
   border-radius: $border-radius;
   &__image {
     width: 100px;
+    cursor: pointer;
   }
   &__name {
     margin-top: 10px;
