@@ -1,62 +1,66 @@
 <template>
-  <div class="v-filter">
-    <h3 class="v-filter__title">
-      Filter
-    </h3>
-    <div class="v-filter__category">
-      <vSelect 
-        :options="categories"
-        :selected="selected"
-        :is_expanded="IS_DESKTOP"
-        @select="sortByCategories"
-      />
-    </div>
-    <div class="v-filter__range">
-      <div class="v-filter__range-title">
-        Price
+  <div class="container">
+    <div class="main__inner">
+      <div class="v-filter">
+        <h3 class="v-filter__title">
+          Filter
+        </h3>
+        <div class="v-filter__category">
+          <vSelect 
+            :options="categories"
+            :selected="selected"
+            :is_expanded="IS_DESKTOP"
+            @select="sortByCategories"
+          />
+        </div>
+        <div class="v-filter__range">
+          <div class="v-filter__range-title">
+            Price
+          </div>
+          <div class="v-filter__range-values">
+            <p>Min: {{ minPrice }}</p>
+            <p>Max: {{ maxPrice }}</p>
+          </div>
+          <div class="v-filter__range-slider">
+            <input
+              v-model.number="maxPrice"
+              class="v-filter__range-slider-input"
+              type="range"
+              min="0"
+              max="200"
+              step="10"
+              @change="setRangeSlider()"
+            />
+          </div>
+        </div>
       </div>
-      <div class="v-filter__range-values">
-        <p>Min: {{ minPrice }}</p>
-        <p>Max: {{ maxPrice }}</p>
-      </div>
-      <div class="v-filter__range-slider">
-        <input
-          v-model.number="maxPrice"
-          class="v-filter__range-slider-input"
-          type="range"
-          min="0"
-          max="200"
-          step="10"
-          @change="setRangeSlider()"
+      <div class="v-catalog">
+        <v-notification 
+          :messages="messages"
+          :timeout="3000"
         />
-      </div>
-    </div>
-  </div>
-  <div class="v-catalog">
-    <v-notification 
-      :messages="messages"
-      :timeout="3000"
-    />
 
-    <router-link :to="{ name: 'cart' }">
-      <div class="v-catalog__link_to_cart">
-        <img
-          class="v-catalog__link_to_cart_img"
-          :src="require('../../static/images/cart-icon.svg')"
-          alt="cart"
-        />
-        Cart: {{ CART.length }}
-      </div>
-    </router-link>
+        <router-link :to="{ name: 'cart' }">
+          <div class="v-catalog__link_to_cart">
+            <img
+              class="v-catalog__link_to_cart_img"
+              :src="require('../../static/images/cart-icon.svg')"
+              alt="cart"
+            />
+            Cart: {{ CART.length }}
+          </div>
+        </router-link>
 
-    <div class="v-catalog__list">
-      <vCatalogItem 
-        v-for="product in filteredProducts"
-        :key="product.article"
-        :product_data="product"
-        @add-to-cart="addToCart"
-        @product-click="productClick"
-      />
+        <div class="v-catalog__list">
+          <vCatalogItem 
+            v-for="product in filteredProducts"
+            :key="product.article"
+            :product_data="product"
+            @add-to-cart="addToCart"
+            @product-click="productClick"
+          />
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -174,6 +178,13 @@
 
 <style lang="scss">
 @import '../../static/style/vars';
+.main__inner {
+  display: flex;
+  margin-top: 100px;
+  right: 0;
+  left: 0;
+  width: 100%;
+}
 .v-catalog {
   margin-left: 50px;
   justify-self: flex-start;

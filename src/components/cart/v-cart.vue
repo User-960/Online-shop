@@ -1,35 +1,37 @@
 <template>
-  <div class="v-cart">
-    <router-link :to="{ name: 'catalog' }">
-      <div class="v-catalog__link_to_shop">
-        Back to Catalog
-        <img
-          class="v-catalog__link_to_shop_img"
-          :src="require('../../static/images/shop-icon.svg')"
-          alt="shop"
-        />
+  <div class="container">
+    <div class="v-cart">
+      <router-link :to="{ name: 'catalog' }">
+        <div class="v-catalog__link_to_shop">
+          Back to Catalog
+          <img
+            class="v-catalog__link_to_shop_img"
+            :src="require('../../static/images/shop-icon.svg')"
+            alt="shop"
+          />
+        </div>
+      </router-link>
+      <h1 class="v-cart__title">
+        Cart
+      </h1>
+      <p
+        v-if="!CART.length"
+        class="v-cart__cart_empty"
+      >
+        Cart is empty...
+      </p>
+      <vCartItem 
+        v-for="(item, index) in CART"
+        :key="item.article"
+        :cart_item_data="item"
+        @delete-from-cart="deleteFromCart(index)"
+        @increment="increment(index)"
+        @decrement="decrement(index)"
+      />
+      <div class="v-cart__total">
+        <p class="v-cart__total-text">Total:</p>
+        <p class="v-cart__total-number">{{ toFix(cartTotalCost) }}</p>
       </div>
-    </router-link>
-    <h1 class="v-cart__title">
-      Cart
-    </h1>
-    <p
-      v-if="!CART.length"
-      class="v-cart__cart_empty"
-    >
-      Cart is empty...
-    </p>
-    <vCartItem 
-      v-for="(item, index) in CART"
-      :key="item.article"
-      :cart_item_data="item"
-      @delete-from-cart="deleteFromCart(index)"
-      @increment="increment(index)"
-      @decrement="decrement(index)"
-    />
-    <div class="v-cart__total">
-      <p class="v-cart__total-text">Total:</p>
-      <p class="v-cart__total-number">{{ toFix(cartTotalCost) }}</p>
     </div>
   </div>
 </template>
@@ -122,8 +124,8 @@
 }
 .v-catalog__link{
   &_to_shop {
-    position: absolute;
-    top: 40px;
+    position: fixed;
+    bottom: 30px;
     right: 30px;
     padding: $spacing-padding;
     border: 1px solid #aeaeae;

@@ -1,44 +1,48 @@
 <template>
-  <div class="v-product-page">
-    <v-notification 
-      :messages="messages"
-      :timeout="3000"
-    />
-
-    <router-link :to="{ name: 'cart' }">
-      <div class="v-catalog__link_to_cart">
-        <img
-          class="v-catalog__link_to_cart_img"
-          :src="require('../../static/images/cart-icon.svg')"
-          alt="cart"
+  <div class="container">
+    <div class="main__inner">
+      <div class="v-product-page">
+        <v-notification 
+          :messages="messages"
+          :timeout="3000"
         />
-        Cart: {{ CART.length }}
-      </div>
-    </router-link>
-    
-    <h3 class="v-product-page__title">
-      {{ product.name }}
-    </h3>
-    <div class="v-product-page__inner">
-      <img
-        v-if="product.image"
-        class="v-product-page__image"
-        :src="require('../../static/images/catalog/' + product.image)"
-        alt="img"
-      />
 
-      <div class="v-product-page__info">
-        <p class="v-product-page__info-name"><span>Name: </span>{{ product.name }}</p>
-        <p class="v-product-page__info-price"><span>Price: </span>{{ toFix(product.price) }} </p>
-        <p class="v-product-page__info-category"><span>Category: </span>{{ product.category }}</p>
-        <p class="v-product-page__info-description"><span>Description: </span>{{ product.description }}</p>
-        <div class="v-product-page__btns">
-          <button
-            class="v-catalog-item__add_to_cart_btn btn"
-            @click="addToCart"
-          >
-            Add to Cart
-          </button>
+        <router-link :to="{ name: 'cart' }">
+          <div class="v-catalog__link_to_cart">
+            <img
+              class="v-catalog__link_to_cart_img"
+              :src="require('../../static/images/cart-icon.svg')"
+              alt="cart"
+            />
+            Cart: {{ CART.length }}
+          </div>
+        </router-link>
+
+        <h3 class="v-product-page__title">
+          {{ product.name }}
+        </h3>
+        <div class="v-product-page__inner">
+          <img
+            v-if="product.image"
+            class="v-product-page__image"
+            :src="require('../../static/images/catalog/' + product.image)"
+            alt="img"
+          />
+
+          <div class="v-product-page__info">
+            <p class="v-product-page__info-name"><span>Name: </span>{{ product.name }}</p>
+            <p class="v-product-page__info-price"><span>Price: </span>{{ toFix(product.price) }} </p>
+            <p class="v-product-page__info-category"><span>Category: </span>{{ product.category }}</p>
+            <p class="v-product-page__info-description"><span>Description: </span>{{ product.description }}</p>
+            <div class="v-product-page__btns">
+              <button
+                class="v-catalog-item__add_to_cart_btn btn"
+                @click="addToCart"
+              >
+                Add to Cart
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -115,7 +119,7 @@
     margin-top: 15px;
   }
   &__image {
-    width: 150px;
+    width: 160px;
   }
   &__info {
     display: flex;

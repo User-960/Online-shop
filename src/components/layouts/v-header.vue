@@ -23,7 +23,15 @@
     </menu>
 
     <div class="v-header__search">
+      <input
+        v-model="searchValue"
+        placeholder="Search..."
+        class="v-header__search-input"
+        type="text"
+        @keypress.enter="search(searchValue)"
+      />
       <button
+        v-if="searchValue"
         class="v-header__search-btn"
         @click="clearSearchField"
       >
@@ -35,11 +43,6 @@
       >
         <i class="material-icons">search</i>
       </button>
-      <input
-        v-model="searchValue"
-        class="v-header__search-input"
-        type="text"
-      />
     </div>
   </div>
 </template>
@@ -62,6 +65,7 @@
         if (this.$route.path !== '/catalog') {
           this.$router.push('/catalog');
         }
+        this.searchValue = '';
       },
       clearSearchField() {
         this.searchValue = '';
@@ -78,10 +82,9 @@
 @import '../../static/style/vars';
 .v-header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   padding: 16px;
-  background-color: $color-dark;
+  background-color: #505050;
   position: fixed;
   top: 0;
   left: 0;
@@ -95,6 +98,7 @@
     display: flex;
     justify-content: space-between;
     width: 300px;
+    margin-left: 150px;
   }
   &__link_to_home,
   &__link_to_catalog {
@@ -112,6 +116,7 @@
   &__search {
     display: flex;
     align-items: center;
+    margin-left: 150px;
   }
   &__search-btn {
     background-color: transparent;
