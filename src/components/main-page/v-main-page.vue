@@ -10,6 +10,7 @@
         ONLINE SHOP
       </h1>
     </div>
+
     <div class="v-main-page__categories">
       <div class="container">
         <div class="v-main-page__categories-inner">
@@ -49,7 +50,7 @@
 
   export default defineComponent({
     name: 'v-main-page',
-    props: {},
+    // props: {},
     data: () => ({
 
     }),

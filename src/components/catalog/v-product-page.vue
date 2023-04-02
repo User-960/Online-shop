@@ -22,11 +22,8 @@
           {{ product.name }}
         </h3>
         <div class="v-product-page__inner">
-          <img
-            v-if="product.image"
-            class="v-product-page__image"
-            :src="require('../../static/images/catalog/' + product.image)"
-            alt="img"
+          <vCarousel 
+            :carousel_data="product.image_slider"
           />
 
           <div class="v-product-page__info">
@@ -55,13 +52,14 @@
   import Product from '../../models/ProductModel';
   import vNotification from '../notifications/v-notification.vue';
   // import toFixPrice from '../../filters/toFix';
+  import vCarousel from '../carousel/v-carousel.vue';
 
   export default defineComponent({
     name: 'v-product-page',
     components: {
-      vNotification
+      vNotification,
+      vCarousel
     },
-    props: {},
     data: () => ({
       messages: []
     }),
