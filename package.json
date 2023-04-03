@@ -15,7 +15,7 @@
     "src/**/*.{ts,vue}": "eslint --cache --fix"
   },
   "keywords": [],
-  "author": "",
+  "author": "Ivan Volodin",
   "license": "ISC",
   "browserslist": [
     "> 1%",
