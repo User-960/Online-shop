@@ -18,26 +18,25 @@
             Categories
           </h2>
           <div class="v-main-page__categories-items">
-            <a
-              class="v-main-page__categories-item v-main-page__category-woman"
-              href="#"
-            >
-              <img
-                :src="require('../../static/images/woman-category.jpg')"
-                alt="category"
-              />
-              <p>Woman</p>
-            </a>
-            <a
-              class="v-main-page__categories-item v-main-page__category-man"
-              href="#"
-            >
-              <img
-                :src="require('../../static/images/man-category.jpg')"
-                alt="category"
-              />
-              <p>Man</p>
-            </a>
+            <router-link :to="{ name: 'catalog' }">
+              <div class="v-main-page__categories-item v-main-page__category-woman">
+                <img
+                  :src="require('../../static/images/woman-category.jpg')"
+                  alt="category"
+                />
+                <p>Woman</p>
+              </div>
+            </router-link>
+
+            <router-link :to="{ name: 'catalog' }">
+              <div class="v-main-page__categories-item v-main-page__category-man">
+                <img
+                  :src="require('../../static/images/man-category.jpg')"
+                  alt="category"
+                />
+                <p>Man</p>
+              </div>
+            </router-link>
           </div>
         </div>
       </div>
@@ -101,12 +100,12 @@
   }
   &__categories-item {
     position: relative;
-    max-height: 580px;
+    display: flex;
+    justify-content: center;
   }
   &__categories-item img {
-    object-fit: contain;
-    width: 100%;
-    height: 100%;
+    object-fit: cover;
+    max-height: 580px;
   }
   &__categories-item p {
     position: absolute;
