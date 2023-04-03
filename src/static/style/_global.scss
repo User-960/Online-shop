@@ -33,6 +33,10 @@ body {
   padding: 0 15px;
 }
 
+#app {
+  height: 100%;
+}
+
 /* scrollbar for FireFox */
 * {
   scrollbar-color: $color-blue $color-dark;

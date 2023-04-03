@@ -1,5 +1,5 @@
 <template>
-  <div class="v-header">
+  <div class="v-header__inner">
     <router-link :to="{ name: 'mainPage' }">
       <img
         class="v-header__logo"
@@ -81,16 +81,19 @@
 <style lang="scss">
 @import '../../static/style/vars';
 .v-header {
-  display: flex;
-  align-items: center;
-  padding: 16px;
-  background-color: #505050;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 80px;
-  z-index: 20;
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+    background-color: #505050;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    z-index: 20;
+  }
   &__logo {
     width: 50px;
   }
@@ -98,7 +101,6 @@
     display: flex;
     justify-content: space-between;
     width: 300px;
-    margin-left: 150px;
   }
   &__link_to_home,
   &__link_to_catalog {
@@ -116,7 +118,6 @@
   &__search {
     display: flex;
     align-items: center;
-    margin-left: 150px;
   }
   &__search-btn {
     background-color: transparent;
