@@ -1,8 +1,15 @@
 <template>
   <div class="v-carousel__inner">
-    <div class="carousel__wrapper">
+    <button
+      class="v-carousel__btn"
+      @click="prevSlide"
+    >
+      &lt;
+    </button>
+
+    <div class="v-carousel__wrapper">
       <div
-        class="v-carousel"
+        class="v-carousel__slider"
         :style="{ 'margin-left': '-' + (100 * currentSLideIndex) + '%' }"
       >
         <vCarouselItem 
@@ -12,17 +19,20 @@
         />
       </div>
     </div>
-    <div class="v-carousel__btns">
-      <button @click="prevSlide">Prev</button>
-      <button @click="nextSlide">Next</button>
-    </div>
+    
+    <button
+      class="v-carousel__btn"
+      @click="nextSlide"
+    >
+      >
+    </button>
   </div>
 </template>
 
 <script lang="ts">
   import { defineComponent } from 'vue';
   import vCarouselItem from './v-carousel-item.vue';
-  import SliderItem from '../../models/Carousel';
+  import SliderProductItem from '../../models/SliderProductItem';
 
   export default defineComponent({
     name: 'v-carousel',
@@ -31,7 +41,7 @@
     },
     props: {
       carousel_data: {
-        type: Array<SliderItem>,
+        type: Array<SliderProductItem>,
         default() {
           return [];
         }
@@ -73,21 +83,39 @@
 </script>
 
 <style lang="scss">
-.v-carousel__inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.carousel__wrapper {
-  position: relative;
-  height: 400px;
-  width: 200px;
-  overflow: hidden;
-}
+@import '../../static/style/vars';
 
 .v-carousel {
-  display: flex;
-  width: 1000px;
-  transition: all ease .5s;
+  &__inner {
+    display: flex;
+    justify-content: center;
+  }
+  &__wrapper {
+    position: relative;
+    height: 400px;
+    width: 200px;
+    overflow: hidden;
+    margin: 0 40px;
+  }
+  &__slider {
+    display: flex;
+    width: 1000px;
+    transition: all ease .5s;
+  }
+  &__btn {
+    background: none;
+    border: none;
+    outline: none;
+    width: 60px;
+    font-family: 'Montserrat';
+    font-size: 32px;
+    color: $color-dark;
+    transition: all ease .5s;
+    cursor: pointer;
+  }
+  &__btn:hover {
+    background-color: #e7e7e7;
+    color: $color-grey;
+  }
 }
 </style>

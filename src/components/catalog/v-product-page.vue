@@ -21,6 +21,7 @@
         <h3 class="v-product-page__title">
           {{ product.name }}
         </h3>
+        
         <div class="v-product-page__inner">
           <vCarousel 
             :carousel_data="product.image_slider"

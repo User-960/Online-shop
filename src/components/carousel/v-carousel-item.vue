@@ -9,13 +9,13 @@
 
 <script lang="ts">
   import { defineComponent, PropType } from 'vue';
-  import SliderItem from '../../models/Carousel';
+  import SliderProductItem from '../../models/SliderProductItem';
 
   export default defineComponent({
     name: 'v-carousel-item',
     props: {
       item_data: {
-        type: Object as PropType<SliderItem>,
+        type: Object as PropType<SliderProductItem>,
         default() {
           return {};
         }

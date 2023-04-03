@@ -1,8 +1,8 @@
-import SliderItem from './Carousel';
+import SliderProductItem from './SliderProductItem';
 
 export default interface Product {
   image: string;
-  image_slider: Array<SliderItem>;
+  image_slider: Array<SliderProductItem>;
   name: string;
   price: number;
   article: string;
