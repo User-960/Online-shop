@@ -123,4 +123,10 @@
     color: #3d3d3d;
   }
 }
+
+@media (max-width: 780px) {
+.v-main-page__categories-item img {
+  max-height: 255px;
+}
+}
 </style>

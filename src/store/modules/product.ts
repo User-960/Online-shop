@@ -1,5 +1,6 @@
-import axios from 'axios';
+// import axios from 'axios';
 import Product from '../../models/ProductModel';
+import { productsData } from './data';
 
 interface StateRepo {
   searchValue: string,
@@ -19,18 +20,21 @@ export default {
   },
 
   actions: {
-    async GET_PRODUCTS_FROM_API({commit}) {
-      return await axios('http://localhost:3001/products', {
-        method: 'GET',
-      })
-        .then((products) => {
-          commit('SET_PRODUCTS_TO_STATE', products.data);
-          return products;
-        })
-        .catch((error) => {
-          console.log(error);
-          return error;
-        });
+    // async GET_PRODUCTS_FROM_API({commit}) {
+    //   return await axios('http://localhost:3001/products', {
+    //     method: 'GET',
+    //   })
+    //     .then((products) => {
+    //       commit('SET_PRODUCTS_TO_STATE', products.data);
+    //       return products;
+    //     })
+    //     .catch((error) => {
+    //       console.log(error);
+    //       return error;
+    //     });
+    // },
+    GET_PRODUCTS_FROM_API({commit}) {
+      commit('SET_PRODUCTS_TO_STATE', productsData);
     },
     ADD_TO_CART({commit}, product: Product): void {
       commit('SET_CART', product);

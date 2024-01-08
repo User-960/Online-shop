@@ -81,7 +81,6 @@
       vSelect,
       vNotification
     },
-    // props: {},
     data: () => ({
       categories: [
         { name: 'All', value: 'all' },
@@ -114,14 +113,21 @@
         this.sortProductsBySearchValue(this.SEARCH_VALUE);
       }
     },
-    mounted() {
-      this.GET_PRODUCTS_FROM_API()
-        .then((response) => {
-          if (response.data) {
-            this.sortByCategories();
-            this.sortProductsBySearchValue(this.SEARCH_VALUE);
-          }
-        });
+    // mounted() {
+    //   this.GET_PRODUCTS_FROM_API()
+    //     .then((response) => {
+    //       if (response.data) {
+    //         this.sortByCategories();
+    //         this.sortProductsBySearchValue(this.SEARCH_VALUE);
+    //       }
+    //     });
+    // },
+    created() {
+      this.GET_PRODUCTS_FROM_API();
+      if (this.PRODUCTS) {
+        this.sortByCategories();
+        this.sortProductsBySearchValue(this.SEARCH_VALUE);
+      }
     },
     methods: {
       ...mapActions([
@@ -192,7 +198,6 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
     margin-top: 100px;
   }
   &__link_to_cart {
